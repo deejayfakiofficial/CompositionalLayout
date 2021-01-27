@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8411153725C16D0C007CBAEE /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411153625C16D0C007CBAEE /* CustomCollectionViewCell.swift */; };
 		8493D17725C04A0A004C7712 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493D17625C04A0A004C7712 /* AppDelegate.swift */; };
 		8493D17925C04A0B004C7712 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493D17825C04A0B004C7712 /* SceneDelegate.swift */; };
 		8493D17B25C04A0B004C7712 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493D17A25C04A0B004C7712 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8411153625C16D0C007CBAEE /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		8493D17325C04A0A004C7712 /* CompositionalLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompositionalLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8493D17625C04A0A004C7712 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8493D17825C04A0B004C7712 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				8493D17625C04A0A004C7712 /* AppDelegate.swift */,
 				8493D17825C04A0B004C7712 /* SceneDelegate.swift */,
 				8493D17A25C04A0B004C7712 /* ViewController.swift */,
+				8411153625C16D0C007CBAEE /* CustomCollectionViewCell.swift */,
 				8493D17C25C04A0B004C7712 /* Main.storyboard */,
 				8493D17F25C04A0C004C7712 /* Assets.xcassets */,
 				8493D18125C04A0C004C7712 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 				8493D17B25C04A0B004C7712 /* ViewController.swift in Sources */,
 				8493D17725C04A0A004C7712 /* AppDelegate.swift in Sources */,
 				8493D17925C04A0B004C7712 /* SceneDelegate.swift in Sources */,
+				8411153725C16D0C007CBAEE /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
