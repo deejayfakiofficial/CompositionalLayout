@@ -16,17 +16,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     private var model = [Model]()
+    private let images = ["image_1", "image_2", "image_3", "image_4"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout = layout()
         downloadImage()
+        collectionView.collectionViewLayout = layout()
     }
+   
 }
 
 extension ViewController {
     
     func layout() -> UICollectionViewCompositionalLayout {
+        downloadImage()
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .absolute(200),
             heightDimension: .fractionalHeight(1))
@@ -51,35 +55,44 @@ extension ViewController {
     }
 }
 
-extension ViewController {
-    
-    func configureImage(cell: CustomCollectionViewCell, for indexPath: IndexPath) {
-        let models = model[indexPath.row]
-        
-        DispatchQueue.global().async {
-            guard let imageURL = URL(string: models.download_url!) else {return}
-            guard let imageData = try? Data(contentsOf: imageURL) else {return}
-            DispatchQueue.main.async {
-                cell.imageView.image = UIImage(data: imageData)
-            }
-        }
-    }
-}
+//extension ViewController {
+//
+//    func configureImage(cell: CustomCollectionViewCell, for indexPath: IndexPath) {
+//        let models = model[indexPath.row]
+//
+//        DispatchQueue.global().async {
+//            guard let imageURL = URL(string: models.download_url!) else {return}
+//            guard let imageData = try? Data(contentsOf: imageURL) else {return}
+//            DispatchQueue.main.async {
+//                cell.imageView.image = UIImage(data: imageData)
+//            }
+//        }
+//    }
+//}
 
 extension ViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
-        
-        configureImage(cell: cell, for: indexPath)
+
+        let models = model[indexPath.item]
+
+        DispatchQueue.global().async {
+        let imageURL = URL(string: models.download_url!)
+        let imageData = try? Data(contentsOf: imageURL!)
+        let image = UIImage(data: imageData!)
+            DispatchQueue.main.async {
+            cell.imageView.image = image
+            }
+        }
         return cell
     }
 }
@@ -93,7 +106,8 @@ extension ViewController {
             else {return}
             if error == nil {
                 do {
-                    self.model = try JSONDecoder().decode([Model].self, from: data)
+                    let item = try JSONDecoder().decode([Model].self, from: data)
+                    self.model.append(contentsOf: item)
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }
